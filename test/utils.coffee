@@ -38,3 +38,43 @@ describe('isURL', ->
 		utils.isURL('http://www.tomaskavka.cz/test').should.be.true
 	)
 )
+
+describe('between', ->
+	describe('number', ->
+		it('missing', ->
+			utils.between().should.be.false
+		)
+
+		it('wrong type', ->
+			utils.between({test: 'ok'}).should.be.false
+		)
+	)
+
+	describe('min', ->
+		it('missing', ->
+			utils.between(19).should.be.false
+		)
+
+		it('wrong type', ->
+			utils.between(19, {test: 'ok'}).should.be.false
+		)
+	)
+
+	describe('max', ->
+		it('missing', ->
+			utils.between(19, 0).should.be.false
+		)
+
+		it('wrong type', ->
+			utils.between(19, 0, {test: 'ok'}).should.be.false
+		)
+	)
+
+	it('OK', ->
+		utils.between(19, 20, 210).should.be.false
+		utils.between(19, 0, 18).should.be.false
+		utils.between(19, 19, 20).should.be.true
+		utils.between(19, 0, 19).should.be.true
+		utils.between(19, 0, 20).should.be.true
+	)
+)
