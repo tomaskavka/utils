@@ -88,3 +88,19 @@ describe('between', function() {
     return utils.between(19, 0, 20).should.be["true"];
   });
 });
+
+describe('isInt', function() {
+  it('wrong integers', function() {
+    utils.isInt({
+      int: 20
+    }).should.be["false"];
+    utils.isInt('20').should.be["false"];
+    utils.isInt(20.2).should.be["false"];
+    return utils.isInt(NaN).should.be["false"];
+  });
+  return it('OK', function() {
+    utils.isInt(-10).should.be["true"];
+    utils.isInt(0).should.be["true"];
+    return utils.isInt(19).should.be["true"];
+  });
+});

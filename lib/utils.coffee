@@ -29,6 +29,9 @@ class utils
 			return false
 		return min <= number <= max
 
+	@isInt: (num) ->
+		return _.isNumber(num) and num % 1 is 0
+
 # Plug-ins
 utils.Stopwatch = require('./stopwatch')
 
