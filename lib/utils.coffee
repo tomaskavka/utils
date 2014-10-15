@@ -1,3 +1,5 @@
+_ = require('lodash')
+
 class utils
 
 	# Patterns
@@ -9,17 +11,22 @@ class utils
 
 	# Www
 	@isDomain: (str) ->
+		if not _.isString(str) then return false
 		return (str is str.match(utils.DOMAIN_PATTERN)[0])
 
 	@isIPAddress: (str) ->
+		if not _.isString(str) then return false
 		return str.match(utils.IP_PATTERN)?
 
 	@isURL: (str) ->
+		if not _.isString(str) then return false
 		match = str.match(utils.URL_PATTERN)
 		return if match? then (str is match[0]) else false
 
 	# Number
 	@between: (number, min, max) ->
+		if not _.isNumber(number) or not _.isNumber(min) or not _.isNumber(max)
+			return false
 		return min <= number <= max
 
 # Plug-ins

@@ -3,6 +3,7 @@ utils = require('../lib/utils.js')
 
 describe('isDomain', ->
 	it('wrong domains', ->
+		utils.isDomain({domain: 'tomaskavka.cz'}).should.be.false
 		utils.isDomain('http://www.tomaskavka.cz').should.be.false
 		utils.isDomain('www.tomaskavka.cz').should.be.false
 		utils.isDomain('192.168.0.19').should.be.false
@@ -15,6 +16,7 @@ describe('isDomain', ->
 
 describe('isIPAddress', ->
 	it('wrong IP addresses', ->
+		utils.isIPAddress({ip: '256.2.2'}).should.be.false
 		utils.isIPAddress('http://www.tomaskavka.cz').should.be.false
 		utils.isIPAddress('256.2.2').should.be.false
 		utils.isIPAddress('256.168.0.19').should.be.false
@@ -27,6 +29,7 @@ describe('isIPAddress', ->
 
 describe('isURL', ->
 	it('wrong URL addresses', ->
+		utils.isURL({url: 'tomaskavka.cz'}).should.be.false
 		utils.isURL('tomaskavka.cz').should.be.false
 		utils.isURL('ftp://www.tomaskavka.cz').should.be.false
 		utils.isURL('225.168.0.19').should.be.false

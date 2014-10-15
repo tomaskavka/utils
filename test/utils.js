@@ -7,6 +7,9 @@ utils = require('../lib/utils.js');
 
 describe('isDomain', function() {
   it('wrong domains', function() {
+    utils.isDomain({
+      domain: 'tomaskavka.cz'
+    }).should.be["false"];
     utils.isDomain('http://www.tomaskavka.cz').should.be["false"];
     utils.isDomain('www.tomaskavka.cz').should.be["false"];
     return utils.isDomain('192.168.0.19').should.be["false"];
@@ -18,6 +21,9 @@ describe('isDomain', function() {
 
 describe('isIPAddress', function() {
   it('wrong IP addresses', function() {
+    utils.isIPAddress({
+      ip: '256.2.2'
+    }).should.be["false"];
     utils.isIPAddress('http://www.tomaskavka.cz').should.be["false"];
     utils.isIPAddress('256.2.2').should.be["false"];
     return utils.isIPAddress('256.168.0.19').should.be["false"];
@@ -29,6 +35,9 @@ describe('isIPAddress', function() {
 
 describe('isURL', function() {
   it('wrong URL addresses', function() {
+    utils.isURL({
+      url: 'tomaskavka.cz'
+    }).should.be["false"];
     utils.isURL('tomaskavka.cz').should.be["false"];
     utils.isURL('ftp://www.tomaskavka.cz').should.be["false"];
     return utils.isURL('225.168.0.19').should.be["false"];
