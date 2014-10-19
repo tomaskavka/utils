@@ -38,14 +38,16 @@ describe('isURL', function() {
     utils.isURL({
       url: 'tomaskavka.cz'
     }).should.be["false"];
+    utils.isURL('225.168.0.19').should.be["false"];
     utils.isURL('tomaskavka.cz').should.be["false"];
-    utils.isURL('ftp://www.tomaskavka.cz').should.be["false"];
-    return utils.isURL('225.168.0.19').should.be["false"];
+    return utils.isURL('ftp://256.168.0.1').should.be["false"];
   });
   return it('OK', function() {
+    utils.isURL('ftp://www.tomaskavka.cz').should.be["true"];
     utils.isURL('http://www.tomaskavka.cz').should.be["true"];
     utils.isURL('https://www.tomaskavka.cz').should.be["true"];
-    return utils.isURL('http://www.tomaskavka.cz/test').should.be["true"];
+    utils.isURL('http://www.tomaskavka.cz/test').should.be["true"];
+    return utils.isURL('http://127.0.0.1.xip.io:1919/test').should.be["true"];
   });
 });
 
